@@ -112,6 +112,8 @@ namespace PikchrViewer
                 var width = textView.ViewportWidth;
                 var height = textView.ViewportHeight;
 
+                this.textView.ZoomLevel = 100; // Force 100% zoom level to avoid jagged image.
+
                 using (var bitmap = new Bitmap((int)width, (int)height))
                 {
                     var graphics = Graphics.FromImage(bitmap);
