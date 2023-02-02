@@ -33,8 +33,9 @@ namespace PikchrViewer
             }
 
             this.textView.Closed += this.OnClosed;
-            this.textView.ViewportHeightChanged += this.OnResized;
-            this.textView.ViewportWidthChanged += this.OnResized;
+            this.textView.TextBuffer.PostChanged += this.OnChanged;
+            this.textView.ViewportHeightChanged += this.OnChanged;
+            this.textView.ViewportWidthChanged += this.OnChanged;
 
             this.RedrawAsync().FireAndForget();
         }
@@ -42,16 +43,23 @@ namespace PikchrViewer
         private void OnClosed(object sender, EventArgs e)
         {
             this.textView.Closed -= this.OnClosed;
-            this.textView.ViewportHeightChanged -= this.OnResized;
-            this.textView.ViewportWidthChanged -= this.OnResized;
+            this.textView.TextBuffer.PostChanged -= this.OnChanged;
+            this.textView.ViewportHeightChanged -= this.OnChanged;
+            this.textView.ViewportWidthChanged -= this.OnChanged;
         }
 
-        private void OnResized(object sender, EventArgs e)
+        private void OnChanged(object sender, EventArgs e)
         {
+            var lastVersion = this.textView.TextBuffer.CurrentSnapshot.Version.VersionNumber;
+
             _ = ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
             {
                 await Task.Delay(50);
-                await this.RedrawAsync();
+
+                if (this.textView.TextBuffer.CurrentSnapshot.Version.VersionNumber == lastVersion)
+                {
+                    await this.RedrawAsync();
+                }
             });
         }
 
