@@ -6,7 +6,7 @@ namespace PikchrViewer
         public const string Name = "Pikchr Viewer";
         public const string Description = @"";
         public const string Language = "en-GB";
-        public const string Version = "0.9.1";
+        public const string Version = "0.9.2";
         public const string Author = "Ed Smale";
         public const string Tags = "pikchr, svg, xml";
     }
