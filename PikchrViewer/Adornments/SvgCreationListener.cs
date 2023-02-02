@@ -10,6 +10,7 @@ namespace PikchrViewer
     [ContentType(ContentTypes.WebForms)]
     [ContentType(ContentTypes.Xml)]
     [ContentType("svg")]
+    [FileExtension("pikchr.svg")]
     [TextViewRole(PredefinedTextViewRoles.PrimaryDocument)]
     internal sealed class SvgAdornmentProvider : IWpfTextViewCreationListener
     {
