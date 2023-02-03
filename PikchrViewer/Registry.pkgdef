@@ -1,0 +1,10 @@
+﻿; -------------------------------------------------- ;
+; Icons for the files in the Solution Explorer.
+; Find supported icons here:
+; http://glyphlist.azurewebsites.net/knownmonikers/
+; -------------------------------------------------- ;
+
+[$RootKey$\ShellFileAssociations\.svg]
+"DefaultIconMoniker"="KnownMonikers.Image"
+[$RootKey$\ShellFileAssociations\.pikchr]
+"DefaultIconMoniker"="KnownMonikers.TextAndImage"
